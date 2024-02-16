@@ -1,0 +1,42 @@
+server:
+  port: 9093
+
+spring:
+  application:
+    name: USER-SERVICE
+  datasource:
+    username: root
+    password: Metallica_911
+    url: jdbc:mysql://localhost:3306/udemy_codedecode_userDB
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  profiles:
+    active: localhost
+
+
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    instance-id: ${spring.application.name}:${random.uuid}
+
+
+
+
+
+
